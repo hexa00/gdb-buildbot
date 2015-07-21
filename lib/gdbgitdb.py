@@ -11,6 +11,7 @@ import re
 def get_builder_commit_id (builder, commit, branch):
     """Get the commit hash in the BUILDER's repository which points to the
 log files of the COMMIT that was tested."""
+    os.environ['USERNAME'] = 'root'
     repodir = os.path.join (get_web_base (), builder)
     repo = git.Repo.init (path = repodir)
     commit_id_re = re.compile ("^\d{8}-\d{6}-%s-%s$" % (commit, branch))
@@ -25,6 +26,7 @@ log files of the COMMIT that was tested."""
 
 def switch_to_branch (builder, branch):
     """Switch (or create) to BRANCH on BUILDER repo."""
+    os.environ['USERNAME'] = 'root'
     repodir = os.path.join (get_web_base (), builder)
     repo = git.Repo.init (path = repodir)
 
@@ -45,6 +47,7 @@ def switch_to_branch (builder, branch):
     myhead.checkout (force = True)
 
 class SaveGDBResults (ShellCommand):
+    os.environ['USERNAME'] = 'root'
     name = 'save build results'
     description = 'saving build results'
     descriptionDone = 'saved build results'
@@ -99,6 +102,7 @@ class SaveGDBResults (ShellCommand):
         return SUCCESS
 
     def _evaluateCommand_single_repo (self, cmd):
+        os.environ['USERNAME'] = 'root'
         rev = self.getProperty ('got_revision')
         builder = self.getProperty ('buildername')
         istry = self.getProperty ('isTryBuilder')

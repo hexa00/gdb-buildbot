@@ -11,7 +11,6 @@
 
     "schedulers" : [ { "type" : "AnyBranchScheduler", "name" : "master",
 		       "change_filter" : "all_gdb_filter",
-		       "builderNames" : [ "Ubuntu-1404-x86_64-m64"]
-		     }
+		       "builderNames" : [ "Ubuntu-1404-x86_64-m64" ] }
 		   ]
 }

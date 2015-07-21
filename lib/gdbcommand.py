@@ -30,7 +30,8 @@ class CopyOldGDBSumFile (ShellCommand):
             return SUCCESS
 
         # Switch to the right branch inside the BUILDER repo
-        switch_to_branch (builder, branch)
+        #FIXME this doesn't work for some reason assume always master for now...
+       # switch_to_branch (builder, branch)
 
         try:
             copyfile ("%s/%s/gdb.sum" % (wb, builder),
