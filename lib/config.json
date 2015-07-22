@@ -1,16 +1,21 @@
 {
     "slaves" : [ { "name" : "hexa-slave", "arch" : "x86_64", "jobs" : "4",
+		   "admin" : "antoine.tremblay@ericsson.com" },
+                 { "name" : "arm-slave", "arch" : "armv7l", "jobs" : "4",
 		   "admin" : "antoine.tremblay@ericsson.com" }
 	       ],
-
     "builders" : [ { "name" : "Ubuntu-1404-x86_64-m64", "type" : "Plain_c64t64",
 		     "builddir" : "ubuntu-x86-64",
-		     "slavenames" : [ "hexa-slave" ] }
+		     "slavenames" : [ "hexa-slave" ] },
+                   { "name" : "Debian-jessie-ARMv7", "type" : "ARM",
+		     "builddir" : "debian-arm",
+		     "slavenames" : [ "arm-slave" ] }
 
 		 ],
 
     "schedulers" : [ { "type" : "AnyBranchScheduler", "name" : "master",
 		       "change_filter" : "all_gdb_filter",
-		       "builderNames" : [ "Ubuntu-1404-x86_64-m64" ] }
+		       "builderNames" : [ "Ubuntu-1404-x86_64-m64",
+                                          "Debian-jessie-ARMv7"  ] }
 		   ]
 }
