@@ -26,7 +26,7 @@
       "builddir": "data\/ubuntu-x86-64",
       "slavenames": [
         "hexa-slave",
-        "simark-slave",
+        "simark-slave"
       ]
     },
     {
