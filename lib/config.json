@@ -5,10 +5,10 @@
 		   "admin" : "antoine.tremblay@ericsson.com" }
 	       ],
     "builders" : [ { "name" : "Ubuntu-1404-x86_64-m64", "type" : "Plain_c64t64",
-		     "builddir" : "ubuntu-x86-64",
+		     "builddir" : "data/ubuntu-x86-64",
 		     "slavenames" : [ "hexa-slave" ] },
                    { "name" : "Debian-jessie-ARMv7", "type" : "ARM",
-		     "builddir" : "debian-arm",
+		     "builddir" : "data/debian-arm",
 		     "slavenames" : [ "arm-slave" ] }
 
 		 ],
