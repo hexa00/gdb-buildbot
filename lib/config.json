@@ -7,6 +7,12 @@
       "admin": "antoine.tremblay@ericsson.com"
     },
     {
+      "name": "simark-slave",
+      "arch": "x86_64",
+      "jobs": "4",
+      "admin": "simon.marchi@ericsson.com"
+    },
+    {
       "name": "arm-slave",
       "arch": "armv7l",
       "jobs": "4",
@@ -19,7 +25,8 @@
       "type": "Plain_c64t64",
       "builddir": "data\/ubuntu-x86-64",
       "slavenames": [
-        "hexa-slave"
+        "hexa-slave",
+        "simark-slave",
       ]
     },
     {
