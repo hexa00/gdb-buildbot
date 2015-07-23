@@ -25,13 +25,14 @@ class CopyOldGDBSumFile (ShellCommand):
         wb = get_web_base ()
         if branch is None:
             branch = 'master'
+        if len(branch) == 0:
+            branch = 'master'
 
         if (istrybuilder and istrybuilder == 'yes') or (isrebuild and isrebuild == 'yes'):
             return SUCCESS
 
         # Switch to the right branch inside the BUILDER repo
-        #FIXME this doesn't work for some reason assume always master for now...
-       # switch_to_branch (builder, branch)
+        switch_to_branch (builder, branch)
 
         try:
             copyfile ("%s/%s/gdb.sum" % (wb, builder),
@@ -55,6 +56,8 @@ class GdbCatSumfileCommand(ShellCommand):
         istry = self.getProperty('isTryBuilder')
         branch = self.getProperty('branch')
         if branch is None:
+            branch = 'master'
+        if len(branch) == 0:
             branch = 'master'
 
         # Switch to the right branch inside the BUILDER repo

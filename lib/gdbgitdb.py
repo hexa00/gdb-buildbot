@@ -68,6 +68,9 @@ class SaveGDBResults (ShellCommand):
 
         if branch is None:
             branch = 'master'
+        if len(branch) == 0:
+            branch = 'master'
+
         if istry and istry == 'yes':
             # Do nothing
             return SUCCESS
@@ -112,6 +115,8 @@ class SaveGDBResults (ShellCommand):
         full_tag = "%s-%s-%s" % (datetime.now ().strftime ("%Y%m%d-%H%M%S"), rev, branch)
 
         if branch is None:
+            branch = 'master'
+        if len(branch) == 0:
             branch = 'master'
 
         repo = git.Repo.init (path = repodir)
