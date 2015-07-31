@@ -21,22 +21,56 @@
   ],
   "builders": [
     {
-      "name": "Ubuntu-1404-x86_64-m64",
+      "name": "Ubuntu-1404-x86",
       "type": "Plain_c64t64",
       "builddir": "data\/ubuntu-x86-64",
       "slavenames": [
-        "hexa-slave",
-        "simark-slave"
+         "hexa-slave",
+         "simark-slave"
       ]
     },
     {
-      "name": "Debian-jessie-ARMv7",
-      "type": "ARM",
-      "builddir": "data\/debian-arm",
+      "name": "Ubuntu-1404-x86-native-gdbserver",
+      "type": "NativeGDBServer_c64t64",
+      "builddir": "data\/ubuntu-x86-64-native-gdbserver",
       "slavenames": [
-        "arm-slave"
+         "hexa-slave",
+         "simark-slave"
       ]
-    }
+    },
+    {
+      "name": "Ubuntu-1404-x86-extended-gdbserver",
+      "type": "NativeExtendedGDBServer_c64t64",
+      "builddir": "data\/ubuntu-x86-64-native-extended-gdbserver",
+      "slavenames": [
+         "hexa-slave",
+         "simark-slave"
+      ]
+    },
+     {
+      "name": "Debian-jessie-ARMv7",
+      "type": "Plain_c64t64",
+      "builddir": "data\/debian-arm-64",
+      "slavenames": [
+         "arm-slave"
+      ]
+    },
+     {
+      "name": "Debian-jessie-ARMv7-native-gdbserver",
+      "type": "NativeGDBServer_c64t64",
+      "builddir": "data\/debian-arm-64-native-gdbserver",
+      "slavenames": [
+         "arm-slave"
+      ]
+     },
+     {
+      "name": "Debian-jessie-ARMv7-native-extended-gdbserver",
+      "type": "NativeExtendedGDBServer_c64t64",
+      "builddir": "data\/debian-arm-64-native-extended-gdbserver",
+      "slavenames": [
+         "arm-slave"
+      ]
+     }
   ],
   "schedulers": [
     {
@@ -44,8 +78,12 @@
       "name": "master",
       "change_filter": "all_gdb_filter",
       "builderNames": [
-        "Ubuntu-1404-x86_64-m64",
-        "Debian-jessie-ARMv7"
+         "Ubuntu-1404-x86",
+         "Ubuntu-1404-x86-native-gdbserver",
+         "Ubuntu-1404-x86-extended-gdbserver",
+         "Debian-jessie-ARMv7",
+         "Debian-jessie-ARMv7-native-gdbserver",
+         "Debian-jessie-ARMv7-native-extended-gdbserver"
       ]
     }
   ]
