@@ -39,6 +39,7 @@ def switch_to_branch (builder, branch):
         repo.index.commit ('Initial commit')
         repo.index.write ()
 
+    branch = branch.split('/')[0]
     if branch not in repo.heads:
         myhead = repo.create_head (branch)
     else:
@@ -138,10 +139,11 @@ class SaveGDBResults (ShellCommand):
             repo.index.commit ('Initial commit')
             repo.index.write ()
 
-        if branch not in repo.heads:
-            myhead = repo.create_head (branch)
+        branch_short = branch.split('/')[0]
+        if branch_short not in repo.heads:
+            myhead = repo.create_head (branch_short)
         else:
-            myhead = repo.heads[branch]
+            myhead = repo.heads[branch_short]
 
         myhead.checkout ()
         if full_tag not in repo.tags:
