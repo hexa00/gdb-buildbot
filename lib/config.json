@@ -3,7 +3,7 @@
     {
       "name": "hexa-slave",
       "arch": "x86_64",
-      "jobs": "4",
+      "jobs": "8",
       "admin": "antoine.tremblay@ericsson.com"
     },
     {
@@ -14,6 +14,12 @@
     },
     {
       "name": "arm-slave",
+      "arch": "armv7l",
+      "jobs": "4",
+      "admin": "antoine.tremblay@ericsson.com"
+    },
+    {
+      "name": "arm-slave-firefly",
       "arch": "armv7l",
       "jobs": "4",
       "admin": "antoine.tremblay@ericsson.com"
@@ -52,7 +58,8 @@
       "type": "Plain_c64t64",
       "builddir": "data\/debian-arm-64",
       "slavenames": [
-         "arm-slave"
+         "arm-slave",
+	 "arm-slave-firefly"
       ]
     },
      {
@@ -60,7 +67,26 @@
       "type": "NativeGDBServer_c64t64",
       "builddir": "data\/debian-arm-64-native-gdbserver",
       "slavenames": [
-         "arm-slave"
+         "arm-slave",
+	 "arm-slave-firefly"
+      ]
+     },
+     {
+      "name": "Debian-jessie-ARMv7-native-gdbserver-arm",
+      "type": "NativeGDBServer_arm",
+      "builddir": "data\/debian-arm-64-native-gdbserver-arm",
+      "slavenames": [
+         "arm-slave",
+	 "arm-slave-firefly"
+      ]
+     },
+     {
+      "name": "Debian-jessie-ARMv7-native-gdbserver-thumb",
+      "type": "NativeGDBServer_thumb",
+      "builddir": "data\/debian-arm-64-native-gdbserver-thumb",
+      "slavenames": [
+         "arm-slave",
+      	 "arm-slave-firefly"
       ]
      },
      {
@@ -68,7 +94,8 @@
       "type": "NativeExtendedGDBServer_c64t64",
       "builddir": "data\/debian-arm-64-native-extended-gdbserver",
       "slavenames": [
-         "arm-slave"
+         "arm-slave",
+	 "arm-slave-firefly"
       ]
      }
   ],
@@ -78,12 +105,13 @@
       "name": "master",
       "change_filter": "toside_gdb_gerrit_filter",
       "builderNames": [
-         "Ubuntu-1404-x86",
-         "Ubuntu-1404-x86-native-gdbserver",
-         "Ubuntu-1404-x86-extended-gdbserver",
-         "Debian-jessie-ARMv7",
-         "Debian-jessie-ARMv7-native-gdbserver",
-         "Debian-jessie-ARMv7-native-extended-gdbserver"
+          "Ubuntu-1404-x86",
+          "Ubuntu-1404-x86-native-gdbserver",
+          "Ubuntu-1404-x86-extended-gdbserver",
+	  "Debian-jessie-ARMv7",
+          "Debian-jessie-ARMv7-native-gdbserver",
+          "Debian-jessie-ARMv7-native-gdbserver-arm",
+          "Debian-jessie-ARMv7-native-gdbserver-thumb"
       ]
     }
   ]
